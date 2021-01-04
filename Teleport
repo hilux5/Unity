@@ -1,0 +1,34 @@
+using System.Collections;
+using System.Collections.Generic;
+using Unity.LEGO.Minifig;
+using UnityEngine;
+
+public class Trigger : MonoBehaviour
+{
+    public GameObject player;
+    public GameObject player2;
+    private Vector3 offset = new Vector3(10, 0, 25);
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
+    void OnTriggerEnter(Collider myTrigger)
+    {
+        if (myTrigger.gameObject.name == "Player Minifig")
+        {
+            Debug.Log("Minifig went through!");
+            player2.GetComponent<CharacterController>().enabled = false;
+            player2.transform.position = player.transform.position + offset;
+            player2.GetComponent<CharacterController>().enabled = true;
+
+        }
+    }
+}
